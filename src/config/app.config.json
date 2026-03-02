@@ -101,9 +101,9 @@
   },
 
   "winner": {
-    "subtitle": "Tonight we're eating at",
+    "subtitle": "We have a winner.",
     "celebrationEmoji": "🎉",
-    "letsEatLabel": "🍽️ Let's eat!",
+    "letsEatLabel": "Close",
     "removeLabel": "Remove & spin again"
   },
 
