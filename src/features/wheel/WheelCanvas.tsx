@@ -117,12 +117,13 @@ export default function WheelCanvas({ names, isSpinning, angle, setAngle, onSpin
 
     // ── Slices ────────────────────────────────────────────────────────────
     const arc           = (Math.PI * 2) / n;
+    const initialOffset = -arc / 2;
     const outerTextR    = r * outerTextRadiusFactor;
     const textRegionW   = outerTextR - innerRadius - 10;
     const textRadiusMid = (innerRadius + outerTextR) / 2;
 
     for (let i = 0; i < n; i++) {
-      const start     = currentAngle + i * arc;
+      const start     = currentAngle + initialOffset + i * arc;
       const end       = start + arc;
       const mid       = (start + end) / 2;
       const color     = COLORS[i % COLORS.length];
