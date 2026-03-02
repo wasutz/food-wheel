@@ -41,7 +41,11 @@ function getFontSize(
     len <= 3 ? caps["3"] :
     9999;
 
-  const startSize = Math.max(minFontSize, Math.min(geometricCap, absurdityCap));
+  const isSingleSlice = arcAngle >= Math.PI * 2 - 0.01;
+
+  const startSize = isSingleSlice
+    ? Math.max(minFontSize, Math.floor(maxWidthPx * 0.28))
+    : Math.max(minFontSize, Math.min(geometricCap, absurdityCap));
 
   for (let s = startSize; s >= minFontSize; s--) {
     ctx.font = `700 ${s}px ${fontFamily}`;
