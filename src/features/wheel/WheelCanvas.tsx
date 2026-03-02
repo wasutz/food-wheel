@@ -30,16 +30,16 @@ function getFontSize(
   maxWidthPx: number,
   ctx: CanvasRenderingContext2D
 ): { size: number; truncated: string } {
-  const chordHeight  = 2 * textRadiusMid * Math.sin(arcAngle / 2);
+  const chordHeight = 2 * textRadiusMid * Math.sin(arcAngle / 2);
   const geometricCap = Math.floor(chordHeight * chordPaddingFactor);
 
   const len = label.length;
   const caps = appConfig.wheel.absurdityCaps as Record<string, number>;
   const absurdityCap =
     len <= 1 ? caps["1"] :
-    len <= 2 ? caps["2"] :
-    len <= 3 ? caps["3"] :
-    9999;
+      len <= 2 ? caps["2"] :
+        len <= 3 ? caps["3"] :
+          9999;
 
   const isSingleSlice = arcAngle >= Math.PI * 2 - 0.01;
 
@@ -64,15 +64,17 @@ function getFontSize(
 }
 
 export default function WheelCanvas({ names, isSpinning, angle, setAngle, onSpinEnd, onSpin }: Props) {
-  const canvasRef     = useRef<HTMLCanvasElement>(null);
-  const animRef       = useRef<number>(0);
-  const angleRef      = useRef(angle);
-  const isSpinRef     = useRef(false);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animRef = useRef<number>(0);
+  const angleRef = useRef(angle);
+  const idleAnimRef = useRef<number>(0);
+  const isSpinRef = useRef(false);
+  const hasSpunRef = useRef(false);
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile,  setIsMobile]  = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const { canvasSize, innerRadius, outerTextRadiusFactor, spinMinRevolutions,
-          spinMaxRevolutions, spinMinDurationMs, spinMaxDurationMs } = appConfig.wheel;
+    spinMaxRevolutions, spinMinDurationMs, spinMaxDurationMs } = appConfig.wheel;
 
   useEffect(() => {
     setIsMobile(window.matchMedia("(pointer: coarse)").matches);
@@ -116,17 +118,17 @@ export default function WheelCanvas({ names, isSpinning, angle, setAngle, onSpin
     }
 
     // ── Slices ────────────────────────────────────────────────────────────
-    const arc           = (Math.PI * 2) / n;
+    const arc = (Math.PI * 2) / n;
     const initialOffset = -arc / 2;
-    const outerTextR    = r * outerTextRadiusFactor;
-    const textRegionW   = outerTextR - innerRadius - 10;
+    const outerTextR = r * outerTextRadiusFactor;
+    const textRegionW = outerTextR - innerRadius - 10;
     const textRadiusMid = (innerRadius + outerTextR) / 2;
 
     for (let i = 0; i < n; i++) {
-      const start     = currentAngle + initialOffset + i * arc;
-      const end       = start + arc;
-      const mid       = (start + end) / 2;
-      const color     = COLORS[i % COLORS.length];
+      const start = currentAngle + initialOffset + i * arc;
+      const end = start + arc;
+      const mid = (start + end) / 2;
+      const color = COLORS[i % COLORS.length];
       const textColor = TEXT_COLORS[i % TEXT_COLORS.length];
 
       ctx.beginPath(); ctx.moveTo(cx, cy);
@@ -169,17 +171,19 @@ export default function WheelCanvas({ names, isSpinning, angle, setAngle, onSpin
   useEffect(() => {
     if (!isSpinning || isSpinRef.current) return;
     isSpinRef.current = true;
+    hasSpunRef.current = true;
+    cancelAnimationFrame(idleAnimRef.current);
 
     const totalSpins = spinMinRevolutions + Math.random() * (spinMaxRevolutions - spinMinRevolutions);
     const extraAngle = Math.random() * Math.PI * 2;
     const totalAngle = Math.PI * 2 * totalSpins + extraAngle;
-    const duration   = spinMinDurationMs + Math.random() * (spinMaxDurationMs - spinMinDurationMs);
-    const startTime  = performance.now();
+    const duration = spinMinDurationMs + Math.random() * (spinMaxDurationMs - spinMinDurationMs);
+    const startTime = performance.now();
     const startAngle = angleRef.current;
-    const easeOut    = (t: number) => 1 - Math.pow(1 - t, 4);
+    const easeOut = (t: number) => 1 - Math.pow(1 - t, 4);
 
     function animate(now: number) {
-      const t        = Math.min((now - startTime) / duration, 1);
+      const t = Math.min((now - startTime) / duration, 1);
       const newAngle = startAngle + totalAngle * easeOut(t);
       angleRef.current = newAngle;
       drawWheel(newAngle);
@@ -194,6 +198,29 @@ export default function WheelCanvas({ names, isSpinning, angle, setAngle, onSpin
     animRef.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animRef.current);
   }, [isSpinning]);
+
+  useEffect(() => {
+    if (hasSpunRef.current || isSpinning || names.length === 0) {
+      cancelAnimationFrame(idleAnimRef.current);
+      return;
+    }
+
+    const IDLE_SPEED = 0.002;
+    let lastTime = performance.now();
+
+    function idleTick(now: number) {
+      const dt = now - lastTime;
+      lastTime = now;
+      angleRef.current += IDLE_SPEED * (dt / 16.67);
+      drawWheel(angleRef.current);
+
+      idleAnimRef.current = requestAnimationFrame(idleTick);
+    }
+
+    idleAnimRef.current = requestAnimationFrame(idleTick);
+    return () => cancelAnimationFrame(idleAnimRef.current);
+  }, [isSpinning, names, drawWheel]);
+
 
   const canSpin = !isSpinning && names.length >= 2;
 
