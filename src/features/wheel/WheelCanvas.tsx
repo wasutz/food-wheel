@@ -128,9 +128,11 @@ export default function WheelCanvas({ names, isSpinning, angle, setAngle, onSpin
       ctx.arc(cx, cy, r, start, end); ctx.closePath();
       ctx.fillStyle = color; ctx.fill();
 
-      ctx.beginPath(); ctx.moveTo(cx, cy);
-      ctx.lineTo(cx + r * Math.cos(start), cy + r * Math.sin(start));
-      ctx.strokeStyle = "rgba(0,0,0,0.4)"; ctx.lineWidth = 1.5; ctx.stroke();
+      if (n > 1) {
+        ctx.beginPath(); ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + r * Math.cos(start), cy + r * Math.sin(start));
+        ctx.strokeStyle = "rgba(0,0,0,0.4)"; ctx.lineWidth = 1.5; ctx.stroke();
+      }
 
       ctx.save(); ctx.translate(cx, cy); ctx.rotate(mid);
       const { size: fs, truncated: lbl } = getFontSize(names[i], arc, textRadiusMid, textRegionW, ctx);
