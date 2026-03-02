@@ -1,0 +1,152 @@
+{
+  "app": {
+    "title": "Food wheel",
+    "subtitle": "Can’t Decide? Spin the Wheel · Bangkok & Beyond",
+    "emoji": "🍜",
+    "defaultLanguage": "th",
+    "metaTitle": "Food wheel",
+    "metaDescription": "Can’t Decide? Spin the Wheel · Bangkok & Beyond"
+  },
+
+  "layout": {
+    "maxWidth": "1480px",
+    "sidebarWidth": "440px",
+    "sidebarBreakpoint": 960,
+    "wheelColumnMobileBottomPadding": "88px"
+  },
+
+  "wheel": {
+    "canvasSize": 700,
+    "innerRadius": 50,
+    "outerTextRadiusFactor": 0.90,
+    "rimOpacity": 0.2,
+    "spinMinRevolutions": 5,
+    "spinMaxRevolutions": 10,
+    "spinMinDurationMs": 4000,
+    "spinMaxDurationMs": 6000,
+    "confettiDurationMs": 4000,
+    "confettiPieceCount": 70,
+    "colors": [
+      "#ff6b00", "#1c1c1c", "#ff9500", "#222222", "#ffd000",
+      "#1e1e1e", "#ff4d00", "#242424", "#ffba08", "#1c1c1c",
+      "#e65c00", "#202020", "#f48c06", "#1e1e1e", "#cc5500"
+    ],
+    "textColors": [
+      "#fff8f0", "#ff9500", "#1a0800", "#ffd000", "#1a0800",
+      "#ff9500", "#fff8f0", "#ffd000", "#1a0800", "#ff9500",
+      "#fff8f0", "#ffd000", "#1a0800", "#ff9500", "#fff8f0"
+    ],
+    "confettiColors": ["#ff6b00", "#ffd000", "#ff9500", "#ffffff", "#ffba08", "#ff4d00"],
+    "fontFamily": "Outfit",
+    "absurdityCaps": { "1": 80, "2": 64, "3": 52 },
+    "chordPaddingFactor": 0.78,
+    "minFontSize": 10,
+    "emptyStateEmoji": "🍜",
+    "emptyStateLabel": "Add restaurants",
+    "emptyStateSubLabel": "to get spinning →",
+    "hubEmoji": "🍽️"
+  },
+
+  "storage": {
+    "keysPrefix": "spineat-",
+    "keys": {
+      "names":   "spineat-names",
+      "history": "spineat-history",
+      "saved":   "spineat-saved"
+    }
+  },
+
+  "tabs": [
+    { "id": "my-list",  "label": "My List",  "icon": "✦" },
+    { "id": "explore",  "label": "Explore",  "icon": "◈" },
+    { "id": "saved",    "label": "Saved",    "icon": "◇" },
+    { "id": "history",  "label": "History",  "icon": "◎" }
+  ],
+
+  "history": {
+    "medals": ["🥇", "🥈", "🥉"],
+    "fallbackEmoji": "🍜",
+    "panelTitle": "Past picks",
+    "clearLabel": "Clear",
+    "emptyTitle": "No history yet.",
+    "emptySubtitle": "Spin the wheel to decide!",
+    "emptyEmoji": "🕐"
+  },
+
+  "myList": {
+    "saveNamePrefix": "My Picks",
+    "minRestaurantsToSpin": 2,
+    "textareaPlaceholder": "ผัดไทย\nต้มยำ\nSushi Masa\nAfter You\n...\n\nOne restaurant per line — wheel updates live!",
+    "panelTitle": "My Restaurants",
+    "saveButtonLabel": "💾 Save",
+    "clearButtonLabel": "Clear all",
+    "onWheelLabel": "On the wheel",
+    "footerHint": "✦ Wheel updates as you type",
+    "emptyHint": "Type above or browse the",
+    "emptyHintEmphasis": "Explore",
+    "emptyHintSuffix": "tab",
+    "emptyEmoji": "🍜",
+    "spacePressHint": "Or press",
+    "spaceKeyLabel": "Space",
+    "minRestaurantsHint": "Add at least {min} restaurants to spin"
+  },
+
+  "saved": {
+    "panelTitle": "Saved lists",
+    "emptyTitle": "No saved lists yet.",
+    "emptySubtitle": "Save your current picks from My List!",
+    "emptyEmoji": "📂",
+    "deleteAriaLabel": "Delete list"
+  },
+
+  "winner": {
+    "subtitle": "Tonight we're eating at",
+    "celebrationEmoji": "🎉",
+    "letsEatLabel": "🍽️ Let's eat!",
+    "removeLabel": "Remove & spin again"
+  },
+
+  "modal": {
+    "savePrompt":   { "icon": "💾", "title": "Save this list",         "iconBg": "bg-amber-400/10 border-amber-400/20" },
+    "saveSuccess":  { "icon": "✅", "title": "List saved!",            "iconBg": "bg-green-400/10 border-green-400/20" },
+    "clearConfirm": { "icon": "🗑️", "title": "Clear all restaurants?", "iconBg": "bg-red-400/10 border-red-400/20"    },
+    "clearSuccess": { "icon": "✨", "title": "Wheel cleared",           "iconBg": "bg-white/[0.05] border-white/10"    },
+    "cancelLabel": "Cancel",
+    "saveListLabel": "Save list",
+    "doneLabel": "Done",
+    "yesClearLabel": "Yes, clear all",
+    "gotItLabel": "Got it",
+    "savePlaceholder": "e.g. Friday Night Picks"
+  },
+
+  "theme": {
+    "brandOrange": "#ff6b00",
+    "brandGold": "#ffd000",
+    "backgroundHsl": "0,0%,3%",
+    "foregroundHsl": "36,100%,96%",
+    "mutedHsl": "0,0%,53%",
+    "cardHsl": "0,0%,6%",
+    "backgroundGradient": [
+      "radial-gradient(ellipse 90% 70% at 35% 50%, rgba(255,107,0,0.055) 0%, transparent 60%)",
+      "radial-gradient(ellipse 40% 50% at 90% 80%, rgba(255,208,0,0.025) 0%, transparent 60%)"
+    ]
+  },
+
+  "explore": {
+    "defaultCityId": "bangkok",
+    "defaultCatFilter": "all",
+    "allCategoryOption": { "id": "all", "label": "All", "emoji": "🍽️" },
+    "restaurantListMaxHeight": "260px",
+    "cityLabel": "Select by City",
+    "storeLabel": "Select a Department Store",
+    "categoryLabel": "Filter by Category",
+    "backAriaLabel": "Back to store list",
+    "selectAllLabel": "Select all",
+    "clearSelectionLabel": "Clear",
+    "noRestaurantsLabel": "No restaurants in this category",
+    "addButtonPrefix": "+ Add",
+    "addAllSuffix": "all",
+    "addSelectedSuffix": "selected",
+    "spinButtonSuffix": "→"
+  }
+}
