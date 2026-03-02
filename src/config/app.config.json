@@ -48,11 +48,11 @@
   },
 
   "storage": {
-    "keysPrefix": "spineat-",
+    "keysPrefix": "spin-",
     "keys": {
-      "names":   "spineat-names",
-      "history": "spineat-history",
-      "saved":   "spineat-saved"
+      "names":   "spin-names",
+      "history": "spin-history",
+      "saved":   "spin-saved"
     }
   },
 
@@ -76,7 +76,7 @@
   "myList": {
     "saveNamePrefix": "My Picks",
     "minRestaurantsToSpin": 2,
-    "textareaPlaceholder": "ผัดไทย\nต้มยำ\nSushi Masa\nAfter You\n...\n\nOne restaurant per line — wheel updates live!",
+    "textareaPlaceholder": "Mo-Mo-Paradise\nSushiro\nSavory Malatang\nAfter You\n...\n\nOne restaurant per line",
     "panelTitle": "My Restaurants",
     "saveButtonLabel": "💾 Save",
     "clearButtonLabel": "Clear all",
@@ -86,6 +86,7 @@
     "emptyHintEmphasis": "Explore",
     "emptyHintSuffix": "tab",
     "emptyEmoji": "🍜",
+    "clickHint": "Click the wheel to spin",
     "spacePressHint": "Or press",
     "spaceKeyLabel": "Space",
     "minRestaurantsHint": "Add at least {min} restaurants to spin"

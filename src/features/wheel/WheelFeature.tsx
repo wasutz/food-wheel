@@ -84,7 +84,7 @@ export default function WheelFeature() {
                 className="desktop-hint mt-4 text-[0.68rem] tracking-widest text-center"
                 style={{ color: "rgba(255,255,255,0.2)" }}
               >
-                {myList.spacePressHint}{" "}
+                {myList.clickHint} {myList.spacePressHint}{" "}
                 <kbd
                   className="font-mono rounded px-1.5 py-0.5 text-[0.65rem]"
                   style={{

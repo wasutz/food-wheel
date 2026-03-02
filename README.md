@@ -4,23 +4,30 @@ A food-themed Wheel of Names to help you decide where to eat in Thailand!
 
 ## Features
 
-- 🎡 **Spin the wheel** — beautifully animated, warm orange/gold palette
-- 📝 **My List tab** — big textarea input, one restaurant per line
-- 🗺️ **Suggest tab** — curated Thailand restaurant categories:
-  - Thai Street Food, Bangkok Restaurants, Japanese, Mookata & BBQ
-  - Chinese & Dim Sum, Western & Fusion, Italian, Dessert & Cafes, Isaan, Seafood
+- 🎡 **Spin the wheel** — click or press Space to spin with smooth, beautiful animations.
+- 📝 **My List tab** — Add your own restaurants (one per line) for the wheel.
+- 🗺️ **Explore tab** — discover curated Thai restaurants organized by department store and city.
 - 💾 **Saved Lists** — save and reload your favourite food combinations
 - 🏆 **History** — track every restaurant the wheel has chosen
-- ✂️ Long names truncated with ellipsis on wheel and in lists
-- ⌨️ Spacebar to spin
-- 🎉 Confetti on winner reveal
-- 💿 localStorage persistence
+- ✂️ **Smart Truncation** — Long names are neatly shortened with ellipses on the wheel and in lists.
+- 🎉 **Winner Celebration** — Confetti animation when a restaurant is chosen.
+
+## Tech Stack
+### Core
+- Next.js 14
+- React 18
+- TypeScript 5
+
+### Styling
+- Tailwind CSS 3
+- Radix UI
+- Lucide (lucide-react)
 
 ## Getting Started
 
 ```bash
-npm install
-npm run dev
+bun install
+bun run dev
 ```
 
 Open http://localhost:3000

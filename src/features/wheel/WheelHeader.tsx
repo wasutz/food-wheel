@@ -24,8 +24,8 @@ export default function WheelHeader({ onSort, onShuffle }: Props) {
         </p>
       </div>
       <div className="flex gap-2">
-        <Button variant="outline" size="sm" onClick={onSort}>↑ A–Z</Button>
-        <Button variant="outline" size="sm" onClick={onShuffle}>⇌ Mix</Button>
+        <Button variant="outline" size="sm" onClick={onSort}>↑ Sort</Button>
+        <Button variant="outline" size="sm" onClick={onShuffle}>⇌ Shuffle</Button>
       </div>
     </div>
   );
