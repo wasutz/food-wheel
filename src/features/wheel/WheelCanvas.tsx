@@ -271,18 +271,6 @@ export default function WheelCanvas({ names, isSpinning, angle, setAngle, onSpin
         </div>
       )}
 
-      {/* Mobile tap button */}
-      {isMobile && canSpin && (
-        <div className="absolute -bottom-[72px] left-1/2 -translate-x-1/2 z-20">
-          <button onClick={onSpin}
-            className="flex items-center gap-2.5 px-9 py-3.5 rounded-full text-white font-bold text-base tracking-wide animate-tap-pulse"
-            style={{ background: "linear-gradient(135deg, #ff6b00 0%, #ff9a00 100%)", WebkitTapHighlightColor: "transparent", touchAction: "manipulation" }}>
-            <span className="text-xl">👆</span>
-            Tap to Spin
-          </button>
-        </div>
-      )}
-
       {/* Spinning indicator */}
       {isSpinning && (
         <div className={`absolute ${isMobile ? "-bottom-[72px]" : "bottom-[10%]"} left-1/2 -translate-x-1/2 z-20 pointer-events-none`}>

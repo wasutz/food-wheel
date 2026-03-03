@@ -81,20 +81,23 @@ export default function WheelFeature() {
             />
             {!isSpinning && names.length >= myList.minRestaurantsToSpin && (
               <p
-                className="desktop-hint mt-4 text-[0.68rem] tracking-widest text-center"
+                className="mt-4 text-[0.68rem] tracking-widest text-center"
                 style={{ color: "rgba(255,255,255,0.2)" }}
               >
-                {myList.clickHint} {myList.spacePressHint}{" "}
-                <kbd
-                  className="font-mono rounded px-1.5 py-0.5 text-[0.65rem]"
-                  style={{
-                    background: "rgba(255,255,255,0.06)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    color: "rgba(255,255,255,0.3)",
-                  }}
-                >
-                  {myList.spaceKeyLabel}
-                </kbd>
+                {myList.clickHint}
+                <span className="desktop-hint">
+                  {myList.spacePressHint}{" "}
+                  <kbd
+                    className="font-mono rounded px-1.5 py-0.5 text-[0.65rem]"
+                    style={{
+                      background: "rgba(255,255,255,0.06)",
+                      border: "1px solid rgba(255,255,255,0.1)",
+                      color: "rgba(255,255,255,0.3)",
+                    }}
+                  >
+                    {myList.spaceKeyLabel}
+                  </kbd>
+                </span>
               </p>
             )}
             {names.length === 1 && (
