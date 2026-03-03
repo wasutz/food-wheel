@@ -1,6 +1,6 @@
 const CACHE_NAME = "food-wheel-v1";
 
-const PRECACHE_URLS = ["/", "/icons/icon-192x192.jpg", "/icons/icon-512x512.jpg"];
+const PRECACHE_URLS = ["/", "/icons/icon-192x192.png", "/icons/icon-512x512.png"];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
