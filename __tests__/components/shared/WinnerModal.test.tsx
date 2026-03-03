@@ -9,6 +9,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import WinnerModal from "@/src/components/shared/WinnerModal";
+import appConfig from "@/src/config/app.config.json";
 
 describe("WinnerModal", () => {
   const defaultProps = {
@@ -26,9 +27,9 @@ describe("WinnerModal", () => {
     expect(screen.getByText("Sushi Masa")).toBeInTheDocument();
   });
 
-  it("displays the 'Tonight we\\'re eating at' label", () => {
+  it("displays the config subtitle label", () => {
     render(<WinnerModal {...defaultProps} />);
-    expect(screen.getByText(/Tonight we.re eating at/i)).toBeInTheDocument();
+    expect(screen.getByText(appConfig.winner.subtitle)).toBeInTheDocument();
   });
 
   it("shows the celebration emoji", () => {
@@ -36,25 +37,25 @@ describe("WinnerModal", () => {
     expect(screen.getByText("🎉")).toBeInTheDocument();
   });
 
-  it("renders the Let's eat button", () => {
+  it("renders the Let's eat button label from config", () => {
     render(<WinnerModal {...defaultProps} />);
-    expect(screen.getByText(/Let.*s eat/i)).toBeInTheDocument();
+    expect(screen.getByText(appConfig.winner.letsEatLabel)).toBeInTheDocument();
   });
 
   it("calls onClose when Let's eat is clicked", () => {
     render(<WinnerModal {...defaultProps} />);
-    fireEvent.click(screen.getByText(/Let.*s eat/i));
+    fireEvent.click(screen.getByText(appConfig.winner.letsEatLabel));
     expect(defaultProps.onClose).toHaveBeenCalledTimes(1);
   });
 
   it("renders the Remove & spin again button", () => {
     render(<WinnerModal {...defaultProps} />);
-    expect(screen.getByText(/Remove.*spin again/i)).toBeInTheDocument();
+    expect(screen.getByText(appConfig.winner.removeLabel)).toBeInTheDocument();
   });
 
   it("calls onRemove when Remove & spin again is clicked", () => {
     render(<WinnerModal {...defaultProps} />);
-    fireEvent.click(screen.getByText(/Remove.*spin again/i));
+    fireEvent.click(screen.getByText(appConfig.winner.removeLabel));
     expect(defaultProps.onRemove).toHaveBeenCalledTimes(1);
   });
 

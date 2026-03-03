@@ -108,6 +108,7 @@ export const CITIES: City[] = [
   {
     id: "chiang-mai", name: "Chiang Mai", emoji: "🌸",
     stores: [
+
       {
         id: "central-festival-cm", name: "Central Festival Chiang Mai", emoji: "🎡",
         description: "Largest mall in northern Thailand",

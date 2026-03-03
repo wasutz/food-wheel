@@ -12,6 +12,7 @@ import {
   loadStorageState,
   saveToStorage,
 } from "@/src/features/wheel/wheel.utils";
+import appConfig from "@/src/config/app.config.json";
 
 // ─── computeWinnerIndex ───────────────────────────────────────────────────────
 
@@ -188,9 +189,9 @@ describe("sortThaiLocale", () => {
 // ─── localStorage helpers ─────────────────────────────────────────────────────
 
 describe("saveToStorage / loadStorageState", () => {
-  const NAMES_KEY   = "spineat-names";
-  const HISTORY_KEY = "spineat-history";
-  const SAVED_KEY   = "spineat-saved";
+  const NAMES_KEY   = appConfig.storage.keys.names;
+  const HISTORY_KEY = appConfig.storage.keys.history;
+  const SAVED_KEY   = appConfig.storage.keys.saved;
 
   beforeEach(() => {
     localStorage.clear();

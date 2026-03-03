@@ -8,6 +8,8 @@
 
 import { renderHook, act } from "@testing-library/react";
 import { useWheelState } from "@/src/features/wheel/useWheelState";
+import appConfig from "@/src/config/app.config.json";
+import { DEFAULT_RESTAURANTS } from "@/src/data/restaurants.data";
 
 // ─── localStorage mock ────────────────────────────────────────────────────────
 
@@ -43,21 +45,21 @@ describe("useWheelState — initial state", () => {
   });
 
   it("loads names from localStorage if present", () => {
-    localStorage.setItem("spineat-names", JSON.stringify(["Ramen", "Sushi"]));
+    localStorage.setItem(appConfig.storage.keys.names, JSON.stringify(DEFAULT_RESTAURANTS));
     const hook = renderAndMount();
-    expect(hook.result.current.names).toEqual(["Ramen", "Sushi"]);
+    expect(hook.result.current.names).toEqual(DEFAULT_RESTAURANTS);
   });
 
   it("loads history from localStorage", () => {
     const history = [{ name: "Burger", time: "12:00" }];
-    localStorage.setItem("spineat-history", JSON.stringify(history));
+    localStorage.setItem(appConfig.storage.keys.history, JSON.stringify(history));
     const hook = renderAndMount();
     expect(hook.result.current.history).toEqual(history);
   });
 
   it("loads saved lists from localStorage", () => {
     const saved = [{ name: "Faves", names: ["A"], date: "01/01/2025" }];
-    localStorage.setItem("spineat-saved", JSON.stringify(saved));
+    localStorage.setItem(appConfig.storage.keys.saved, JSON.stringify(saved));
     const hook = renderAndMount();
     expect(hook.result.current.savedLists).toEqual(saved);
   });
