@@ -67,7 +67,7 @@ export default function WheelFeature() {
         style={{ maxWidth: layout.maxWidth, gridTemplateColumns: `1fr ${layout.sidebarWidth}` }}
       >
         {/* ── LEFT: wheel ── */}
-        <div className="wheel-column flex flex-col gap-5 px-10 py-7">
+        <div className="wheel-column flex flex-col gap-5 px-10 py-5">
           <WheelHeader onSort={sort} onShuffle={shuffle} />
 
           <div className="flex-1 flex flex-col items-center justify-center min-h-0">
@@ -85,7 +85,7 @@ export default function WheelFeature() {
                 style={{ color: "rgba(255,255,255,0.2)" }}
               >
                 {myList.clickHint}
-                <span className="desktop-hint">
+                <span className="desktop-only">
                   {myList.spacePressHint}{" "}
                   <kbd
                     className="font-mono rounded px-1.5 py-0.5 text-[0.65rem]"

@@ -57,10 +57,10 @@
   },
 
   "tabs": [
-    { "id": "my-list",  "label": "My List",  "icon": "✦" },
-    { "id": "explore",  "label": "Explore",  "icon": "◈" },
-    { "id": "saved",    "label": "Saved",    "icon": "◇" },
-    { "id": "history",  "label": "History",  "icon": "◎" }
+    { "id": "my-list",  "label": "My List"},
+    { "id": "explore",  "label": "Explore"},
+    { "id": "saved",    "label": "Saved"},
+    { "id": "history",  "label": "History" }
   ],
 
   "history": {
@@ -87,7 +87,7 @@
     "emptyHintSuffix": "tab",
     "emptyEmoji": "🍜",
     "clickHint": "Click the wheel to spin",
-    "spacePressHint": "Or press",
+    "spacePressHint": " Or press",
     "spaceKeyLabel": "Space",
     "minRestaurantsHint": "Add at least {min} restaurants to spin"
   },

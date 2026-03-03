@@ -51,10 +51,12 @@
     border-left: none !important;
     border-top: 1px solid rgba(255,255,255,0.08) !important;
   }
+  .wheel-column { padding-bottom: 8px !important; gap: 8px !important;}
 }
+
 @media (pointer: coarse) {
-  .desktop-hint { display: none !important; }
-  .wheel-column { padding-bottom: 88px !important; }
+  .desktop-only { display: none !important; }
+  .wheel-column { padding-bottom: 14px !important; }
 }
 
 /* ── All keyframes ── */

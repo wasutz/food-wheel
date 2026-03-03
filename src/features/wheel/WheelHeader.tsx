@@ -19,7 +19,7 @@ export default function WheelHeader({ onSort, onShuffle }: Props) {
             {title}
           </h1>
         </div>
-        <p className="text-[0.7rem] tracking-[1.5px] uppercase" style={{ color: "hsl(0,0%,53%)" }}>
+        <p className="text-[0.7rem] tracking-[1.5px] uppercase desktop-only" style={{ color: "hsl(0,0%,53%)" }}>
           {subtitle}
         </p>
       </div>
