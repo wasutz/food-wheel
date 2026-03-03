@@ -28,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang={appConfig.app.defaultLanguage}>
       <head>
         <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+        <link rel="icon" href="/icons/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
