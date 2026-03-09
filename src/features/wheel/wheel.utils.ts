@@ -4,13 +4,22 @@ import appConfig from "@/src/config/app.config.json";
 /**
  * Determines the winning slice index from a final resting angle.
  * The pointer is fixed at the 3 o'clock position (angle = 0 in canvas coords).
+ *
+ * IMPORTANT: The wheel is drawn with each slice centered on its angle, using
+ * an initialOffset of -arc/2. This means slice 0 is centered at angle 0,
+ * spanning from -arc/2 to +arc/2. We must account for this offset here.
  */
 export function computeWinnerIndex(finalAngle: number, sliceCount: number): number {
-  if (sliceCount === 0) return 0;
+  if (sliceCount === 0) {
+    return 0;
+  }
+
   const arc          = (Math.PI * 2) / sliceCount;
   const normalized   = ((finalAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
   const pointerAngle = (Math.PI * 2 - normalized) % (Math.PI * 2);
-  return Math.floor(pointerAngle / arc) % sliceCount;
+  const adjustedAngle = (pointerAngle + arc / 2) % (Math.PI * 2);
+
+  return Math.floor(adjustedAngle / arc) % sliceCount;
 }
 
 /**

@@ -64,6 +64,22 @@ describe("computeWinnerIndex", () => {
     // index = floor(3π/2 / (2π/4)) = floor(3π/2 / (π/2)) = floor(3) = 3
     expect(computeWinnerIndex(Math.PI / 2, 4)).toBe(3);
   });
+
+  it("at angle 0 with 4 slices, pointer points at slice 0 (centered)", () => {
+    // With slices centered, at angle 0 the pointer is in the middle of slice 0.
+    // pointerAngle = 2π - 0 = 0 (equivalent to 2π, normalized to 0)
+    // adjustedAngle = (0 + π/4) % 2π = π/4
+    // index = floor(π/4 / (π/2)) = floor(0.5) = 0
+    expect(computeWinnerIndex(0, 4)).toBe(0);
+  });
+
+  it("near slice boundary returns correct slice", () => {
+    // With 4 slices (arc = π/2), slice boundaries in pointer-space are at:
+    // π/4, 3π/4, 5π/4, 7π/4 (after accounting for centering offset).
+    // Test a small offset from 0 that should still be slice 0.
+    const smallOffset = 0.1; // well within slice 0
+    expect(computeWinnerIndex(smallOffset, 4)).toBe(0);
+  });
 });
 
 // ─── computeWinner ────────────────────────────────────────────────────────────
